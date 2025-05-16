@@ -12,7 +12,7 @@ except serial.SerialException:
     print(f"Could not open serial port {SERIAL_PORT}. Check your connection and port name.")
     exit(1)
 
-print("Use UP for Forward, DOWN for Backward, SPACE for Stop. Press ESC to exit.")
+print("Use UP for Forward, DOWN for Backward. Press ESC to exit.")
 
 last_cmd = None
 
@@ -29,12 +29,6 @@ try:
                 ser.write(b'B')
                 last_cmd = 'B'
                 print('Backward')
-            time.sleep(0.1)
-        elif keyboard.is_pressed('space'):
-            if last_cmd != 'S':
-                ser.write(b'S')
-                last_cmd = 'S'
-                print('Stop')
             time.sleep(0.1)
         elif keyboard.is_pressed('esc'):
             print('Exiting...')
